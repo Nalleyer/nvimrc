@@ -32,7 +32,7 @@ Plug 'zxqfl/tabnine-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Nalleyer/workspace.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-" Plug 'ctrlpvim/ctrlp.vim'
+
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -52,7 +52,14 @@ autocmd FileType clap_input let g:completion_enable_auto_pop = 0
 " autocmd FileType clap_input call compe#setup({ 'enabled': v:false }, 0)
 
 " use ctrlp for that
-nnoremap <c-p> :Clap mylist<cr>
+function! CtrlP()
+    if workspace#IsWorkspaceLoaded()
+        execute ":Clap mylist"
+    else
+        execute ":Clap files"
+    endif
+endfunction
+nnoremap <c-p> :call CtrlP() <cr>
 
 " ayu
 set termguicolors
