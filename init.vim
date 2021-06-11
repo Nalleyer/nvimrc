@@ -105,6 +105,8 @@ iabbrev fasle false
 
 
 set encoding=utf-8
+set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+
 set helplang=cn
 
 
